@@ -1,0 +1,445 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #ffffff;
+  --surface: #f3f4f6;
+  --text: #172033;
+  --border: #dddddd;
+  --primary: #2563eb;
+  --attribution-bg: rgba(255, 255, 255, 0.86);
+  --font-sans: 'Cairo', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+[data-theme="dark"] {
+  --bg: #101827;
+  --surface: #1e293b;
+  --text: #f8fafc;
+  --border: #334155;
+  --primary: #60a5fa;
+  --attribution-bg: rgba(16, 24, 39, 0.86);
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .card {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 10px;
+    border-radius: 8px;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+  }
+}
+
+/* Custom subtle scrollbar synced to theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Leaflet Popups & Controls Light/Dark Theme Integration */
+.terrascope-map-pin-wrapper {
+  background: transparent !important;
+  border: none !important;
+}
+
+.terrascope-map-pin {
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25) !important;
+}
+
+.leaflet-popup-close-button {
+  color: var(--text) !important;
+}
+
+.leaflet-control-zoom {
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18) !important;
+  overflow: hidden;
+  border-radius: 10px !important;
+}
+
+.leaflet-control-zoom a {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: var(--surface) !important;
+  color: var(--primary) !important;
+}
+
+.leaflet-control-attribution {
+  background: var(--attribution-bg) !important;
+  color: var(--text) !important;
+}
+
+.leaflet-control-attribution a {
+  color: var(--primary) !important;
+}
+
+/* ==========================================
+   TERRASCOPE 3D - DUAL THEME & MOBILE RESPONSIVE UI
+   ========================================== */
+
+.terrascope-app {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  transition: background 0.3s, color 0.3s;
+}
+
+.terrascope-header {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.terrascope-container {
+  max-width: 1450px;
+  padding: 1.5rem 2rem;
+}
+
+.terrascope-h1 {
+  color: var(--primary);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.terrascope-h2,
+.terrascope-h3 {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.terrascope-sidebar {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.terrascope-input {
+  background-color: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+}
+
+.terrascope-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.18);
+}
+
+.terrascope-btn-primary {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 9px;
+  min-height: 38px;
+  font-weight: 700;
+  width: 100%;
+  transition: background-color 0.18s ease, transform 0.15s ease;
+}
+
+.terrascope-btn-primary:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.terrascope-metric-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.terrascope-chart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+.terrascope-chart-viewport {
+  width: 100%;
+  height: 360px;
+}
+
+.terrascope-dataframe {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+.terrascope-download-btn {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 9px;
+  min-height: 38px;
+  font-weight: 700;
+  transition: background-color 0.18s ease;
+}
+
+.terrascope-download-btn:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+/* Mobile Responsive Rules (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  .terrascope-container {
+    padding: 1rem 0.7rem !important;
+  }
+
+  .terrascope-h1 {
+    font-size: 1.55rem !important;
+  }
+
+  .terrascope-h2 {
+    font-size: 1.2rem !important;
+  }
+
+  .terrascope-h3 {
+    font-size: 1rem !important;
+  }
+
+  .terrascope-metric-card {
+    padding: 8px !important;
+  }
+
+  .terrascope-metric-card svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .terrascope-app button svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .terrascope-app p,
+  .terrascope-app label,
+  .terrascope-app .terrascope-text-sm {
+    font-size: 0.88rem;
+  }
+
+  .terrascope-chart-viewport {
+    max-height: 320px;
+    height: 300px;
+  }
+
+  .terrascope-dataframe {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+/* Very Small Screens (max-width: 380px) */
+@media screen and (max-width: 380px) {
+  .terrascope-h1 {
+    font-size: 1.3rem !important;
+  }
+
+  .terrascope-container {
+    padding: 0.6rem 0.4rem !important;
+  }
+}
+
+/* ===== TerraScope Responsive Design ===== */
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  button {
+    max-width: 100%;
+    min-height: 36px;
+    cursor: pointer;
+  }
+}
+
+html, body, #root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.app-shell {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.topbar {
+  width: 100%;
+  min-height: 56px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  padding: 8px 16px;
+}
+
+.main-layout {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+.main-layout.sidebar-collapsed {
+  grid-template-columns: 68px minmax(0, 1fr);
+}
+
+.sidebar {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.map-area {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  min-height: 450px;
+  position: relative;
+}
+
+.control-panel {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  justify-self: center;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.layer-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.bottom-layer-list {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 6px;
+}
+
+/* ===== Tablet ===== */
+@media (max-width: 900px) {
+  .main-layout {
+    grid-template-columns: 260px minmax(0, 1fr);
+  }
+
+  .main-layout.sidebar-collapsed {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+
+  .bottom-layer-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ===== Mobile Android-First App Shell (< 768px) ===== */
+@media (max-width: 767px) {
+  .app-shell {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .topbar {
+    min-height: 50px;
+    padding: 6px 10px;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .topbar h1 {
+    font-size: 15px !important;
+  }
+
+  .main-layout {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .map-area {
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    height: 100%;
+  }
+
+  button svg,
+  .icon,
+  .toolbar svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  h1, h2, h3, p, span, label, button {
+    overflow-wrap: anywhere;
+  }
+
+  img, canvas, video {
+    max-width: 100%;
+  }
+}
+
+/* ===== Small Mobile ===== */
+@media (max-width: 380px) {
+  .topbar h1 {
+    font-size: 14px !important;
+  }
+}
+
+
+

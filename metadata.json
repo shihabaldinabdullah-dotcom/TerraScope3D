@@ -1,0 +1,8 @@
+{
+  "name": "TerraScope 3D — NASA Space Apps Earth Observation Simulator",
+  "description": "An interactive 3D Earth digital twin & satellite simulation exploring NASA climate observation data, orbital telemetry, and climate indicators with bilingual Arabic/English support and beginner developer pitch kit.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
